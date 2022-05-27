@@ -1,4 +1,3 @@
-[4:15 PM] Adulapuram, Shruthi
 import streamlit
 import pandas
 import requests
