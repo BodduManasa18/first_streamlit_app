@@ -1,9 +1,9 @@
+[4:15 PM] Adulapuram, Shruthi
 import streamlit
 import pandas
 import requests
 import snowflake.connector
-from urllib.error 
-import URLErrorstreamlit.title('My Mon\'s New Healthy Diner')
+from urllib.error import URLErrorstreamlit.title('My Mon\'s New Healthy Diner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
@@ -26,15 +26,13 @@ if not fruit_choice:
 streamlit.error("Please select a fruit to get information.")
 else:
 back_from_function = get_fruityvice_data(fruit_choice)
-streamlit.dataframe(back_from_function)
-except URLError as e:
+streamlit.dataframe(back_from_function)except URLError as e:
 streamlit.error()streamlit.header("The fruit load list contains:")
 #Snowflake-related functions
 def get_fruit_load_list():
 with my_cnx.cursor() as my_cur:
 my_cur.execute("select * from fruit_load_list")
-return my_cur.fetchall()
-# Add a button to load the fruit
+return my_cur.fetchall()# Add a button to load the fruit
 if streamlit.button('Get Fruit Load List'):
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_data_rows = get_fruit_load_list()
@@ -50,7 +48,4 @@ if streamlit.button('Add a Fruit to the List'):
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 back_from_function = insert_row_snowflake(add_my_fruit)
 streamlit.text(back_from_function)
-
-
-
 
